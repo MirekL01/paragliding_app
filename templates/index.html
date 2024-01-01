@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paragliding Decision Helper</title>
+</head>
+<body>
+    <h1>Welcome to the Paragliding Decision Helper!</h1>
+
+    {% if name %}
+        <p>Dear {{ name }}, here's my assessment:</p>
+        <p>{{ decision }}</p>
+    {% else %}
+        <p>Please provide your information below:</p>
+        <form method="POST" action="/calculate">
+            <button type="submit">Get Assessment</button>
+        </form>
+    {% endif %}
+</body>
+</html>
