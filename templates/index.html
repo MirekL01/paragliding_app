@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Paragliding Decision Helper</title>
+  <title>Paragliding Decision Helper</title>
 </head>
 <body>
-    <h1>Welcome to the Paragliding Decision Helper!</h1>
+  <h1>Welcome to the Paragliding Decision Helper!</h1>
 
-    {% if name %}
-        <p>Dear {{ name }}, here's my assessment:</p>
-        <p>{{ decision }}</p>
-    {% else %}
-        <p>Please provide your information below:</p>
-        <form method="POST" action="/calculate">
-            <button type="submit">Get Assessment</button>
-        </form>
-    {% endif %}
+  {% if name %}
+    <p>Dear {{ name }}, here's my assessment:</p>
+    <p>{{ decision }}</p>
+  {% else %}
+    <p>Please provide your information below:</p>
+    <form method="POST" action="/calculate">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+
+      <label for="month">Month:</label>
+      <input type="month" id="month" name="month">
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" placeholder="Enter time (HH:MM)">
+
+      <label for="windspeed">Wind Speed:</label>
+      <input type="number" id="windspeed" name="windspeed" placeholder="Enter wind speed (km/h)">
+
+      <label for="winddirection">Wind Direction:</label>
+      <select id="winddirection" name="winddirection">
+        <option value="N">N</option>
+        <option value="S">S</option>
+        <option value="W">W</option>
+        <option value="E">E</option>
+      </select>
+
+      <label for="sitename">Site Name:</label>
+      <select id="sitename" name="sitename">
+        <option value="Le Tacque">Le Tacque</option>
+        <option value="Plemont">Plemont</option>
+        <option value="La Pulante">La Pulante</option>
+      </select>
+
+      <button type="submit">Get Assessment</button>
+    </form>
+  {% endif %}
 </body>
 </html>

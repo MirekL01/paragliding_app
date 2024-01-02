@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 
+
 app = Flask(__name__)
 
 # Variables (combined and adjusted for consistency)
@@ -48,16 +49,28 @@ def calculate():
     try:
         name = request.form['name']
         month = request.form['month'].title()  # Ensure month is capitalized
-        # ... (fetch other form data)
+        time = int(request.form['time'])  # Convert time to integer
+        windspeed = int(request.form['windspeed'])  # Convert windspeed to integer
+        winddirection = request.form['winddirection']
+        sitename = request.form['sitename']
 
+        # Comprehensive input validation
         if month not in month_names:
             raise ValueError("Invalid month name")
-        # ... (validate other inputs)
+        if time not in time_range:
+            raise ValueError("Invalid time")
+        if windspeed not in wind_speed_range:
+            raise ValueError("Invalid windspeed")
+        if winddirection not in wind_directions:
+            raise ValueError("Invalid wind direction")
+        if sitename not in site_names:
+            raise ValueError("Invalid site name")
 
         decision = _get_decision(name, month, time, windspeed, winddirection, sitename)
         return render_template('index.html', name=name, decision=decision)
     except ValueError as e:
         return render_template('index.html', error=str(e))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
