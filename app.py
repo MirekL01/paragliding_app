@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="templates/css")
+print(app.static_url_path + "style.css")
 
 # Variables (combined and adjusted for consistency)
 month_names = [
