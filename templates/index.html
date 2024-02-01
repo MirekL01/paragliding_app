@@ -13,6 +13,7 @@
 {% if name %}
   <p>Hi {{ name }}, here's my advice for you:</p>
   <p>{{ decision }}</p>
+  <button onclick="window.location.href='/'">Return to Main Page</button>
 {% else %}
   <p>Let's find out if the conditions are right for paragliding!  Fill in your info below:</p>
   <form method="POST" action="/calculate">
