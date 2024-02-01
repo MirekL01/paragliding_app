@@ -38,9 +38,49 @@ def _get_decision(name, month, time, windspeed, winddirection, sitename):
         and sitename == "Le Tacque"
     ):
         return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
+    elif (
+        month in winter_months
+        and 7 <= time < 16
+        and 5 <= windspeed < 38
+        and winddirection == "N"
+        and sitename == "Plemont"
+    ):
+        return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
+    elif (
+        month in winter_months
+        and 7 <= time < 16
+        and 5 <= windspeed < 38
+        and winddirection == "S"
+        and sitename == "La Pulante"
+    ):
+        return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
+    
+    elif (
+        month in summer_months
+        and 6 <= time < 21
+        and 5 <= windspeed < 38
+        and winddirection == "W"
+        and sitename == "Le Tacque"
+    ):
+        return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
+    elif (
+        month in summer_months
+        and 6 <= time < 21
+        and 5 <= windspeed < 38
+        and winddirection == "N"
+        and sitename == "Plemont"
+    ):
+        return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
+    elif (
+        month in summer_months
+        and 6 <= time < 21
+        and 5 <= windspeed < 38
+        and winddirection == "S"
+        and sitename == "La Pulante"
+    ):
+        return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} indicates flyable conditions!"
     else:
         return f"Dear {name}, flying at {sitename} in {month} at {time}:00, with windspeed of {windspeed} km/h and wind blowing from {winddirection} NOT ADVISABLE!"
-
 @app.route('/')
 def index():
     return render_template('index.html')
